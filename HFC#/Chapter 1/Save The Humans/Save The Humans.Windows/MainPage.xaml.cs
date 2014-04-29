@@ -26,6 +26,9 @@ namespace Save_The_Humans
     public sealed partial class MainPage : Page
     {
         Random random = new Random();
+        DispatcherTimer enemyTimer = new DispatcherTimer();
+        DispatcherTimer targetTimer = new DispatcherTimer();
+        bool humanCaptured = false;
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -54,6 +57,40 @@ namespace Save_The_Humans
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+
+            enemyTimer.Tick += enemyTimer_Tick;
+            enemyTimer.Interval = TimeSpan.FromSeconds(2);
+
+            targetTimer.Tick += targetTimer_Tick;
+            targetTimer.Interval = TimeSpan.FromSeconds(.1);
+        }
+
+        void targetTimer_Tick(object sender, object e)
+        {
+            /* this code runs every time the timer ticks */
+            progressBar.Value += 1;
+            if (progressBar.Value >= progressBar.Maximum)
+                EndTheGame();
+        }
+
+        private void EndTheGame()
+        {
+            /* This method ends the game by stopping the timers, making the Start button visisble again and
+             * adding the GAME OVER text to the playArea */
+            if (!playArea.Children.Contains(gameOverText))
+            {
+                enemyTimer.Stop();
+                targetTimer.Stop();
+                humanCaptured = false;
+                startButton.Visibility = Visibility.Visible;
+                playArea.Children.Add(gameOverText);
+            }
+        }
+
+        void enemyTimer_Tick(object sender, object e)
+        {
+            /* this code runs every time the timer ticks */
+            AddEnemy();
         }
 
         /// <summary>
@@ -108,7 +145,21 @@ namespace Save_The_Humans
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEnemy();
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+            human.IsHitTestVisible = true;
+            humanCaptured = false;
+            progressBar.Value = 0;
+            startButton.Visibility = Visibility.Collapsed;
+            playArea.Children.Clear();
+            playArea.Children.Add(target);
+            playArea.Children.Add(human);
+            enemyTimer.Start();
+            targetTimer.Start();
+
         }
 
         private void AddEnemy()
