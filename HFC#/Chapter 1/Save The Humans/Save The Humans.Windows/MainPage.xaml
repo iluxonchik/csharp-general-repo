@@ -15,7 +15,7 @@
         <x:String x:Key="AppName">Save The Humans</x:String>
         <ControlTemplate x:Key="EnemyTemplate" TargetType="ContentControl">
             <Grid>
-                <Ellipse Fill="Gray" Height="100" Stroke="Black" Width="75"/>
+                <Ellipse Fill="Red" Height="100" Stroke="Black" Width="75"/>
             </Grid>
         </ControlTemplate>
     </Page.Resources>
