@@ -26,9 +26,18 @@ namespace SimpleCSharpApp
         {
             // Print out the drives on this machine
             // as well as some other details
-
             foreach(string drive in Environment.GetLogicalDrives())
                 Console.WriteLine("Drive : {0}", drive);
+
+            if (Environment.Is64BitOperatingSystem)
+                Console.WriteLine("This is a 64 bit machine");
+            else
+                Console.WriteLine("This is not a 64 bit machine");
+
+            Console.WriteLine("This machine's name is: {0}", Environment.MachineName);
+            Console.WriteLine("The newline symbol for the current environment is: {0}", Environment.NewLine);
+            Console.WriteLine("The full path to system directory is: {0}", Environment.SystemDirectory);
+            Console.WriteLine("The user {0} started this application", Environment.UserName);
 
             Console.WriteLine("OS : {0}",  Environment.OSVersion);
             Console.WriteLine("Number of processors: {0}", Environment.ProcessorCount);
