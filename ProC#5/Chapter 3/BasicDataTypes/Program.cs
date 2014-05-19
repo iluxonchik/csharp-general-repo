@@ -15,6 +15,9 @@ namespace BasicDataTypes
             NewingDataTypes();
             UseDatesAndTimes();
             UseBigInteger();
+            BasicStringFunctionality();
+            StringConcatenation();
+            EscapeChars();
             Console.ReadLine();
         }
 
@@ -66,7 +69,7 @@ namespace BasicDataTypes
 
             // Subtracy 15 mins from the current TimeSpan and print the result
             Console.WriteLine(ts.Subtract(new TimeSpan(0, 15, 0)));
-            
+
             Console.WriteLine();
         }
 
@@ -82,6 +85,43 @@ namespace BasicDataTypes
 
             Console.WriteLine("The value of anEvenBiggerInty is {0}", anEvenBiggerInty);
 
+            Console.WriteLine();
+        }
+
+        static void BasicStringFunctionality()
+        {
+            Console.WriteLine("=> Basic String Functionality");
+            string firstName = "John";
+            Console.WriteLine("Value of firstName: {0}", firstName);
+            Console.WriteLine("firstName has {0} characters", firstName.Length);
+            Console.WriteLine("firstName in uppercase: {0}", firstName.ToUpper());
+            Console.WriteLine("firstName in lowercase: {0}", firstName.ToLower());
+            Console.WriteLine("firstName conains letter y? {0}", firstName.Contains("y"));
+            Console.WriteLine("firstName after replace: {0}", firstName.Replace("h", ""));
+            Console.WriteLine();
+        }
+
+        static void StringConcatenation()
+        {
+            Console.WriteLine("=> String Concatenation");
+            string s1 = "Programming the ";
+            string s2 = "PsychoDrill (PTP)";
+            string s3 = s1 + s2; // or string s3 = String.Concat(s1, s2);
+            Console.WriteLine(s3);
+            Console.WriteLine();
+        }
+
+        static void EscapeChars()
+        {
+            Console.WriteLine("=> Escape Characters:\a");
+            string strWithTabs = "Model\tColor\tSpped\tPet Name\a";
+            Console.WriteLine(strWithTabs);
+
+            Console.WriteLine("Everyone likes \"Hello, Wolrd!\"\a ");
+            Console.WriteLine("C:\\MyApp\\bin\\Debug\a");
+
+            // Add 4 blank lines and produce another beep
+            Console.WriteLine("All finished. \n\n\n\a");
             Console.WriteLine();
         }
     }
