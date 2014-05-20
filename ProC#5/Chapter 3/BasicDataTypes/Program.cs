@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text; // StringBuilder lives here
 using System.Threading.Tasks;
 using System.Numerics; // to use BigInteger
 
@@ -18,6 +18,7 @@ namespace BasicDataTypes
             BasicStringFunctionality();
             StringConcatenation();
             EscapeChars();
+            FunWithStringBuilder();
             Console.ReadLine();
         }
 
@@ -122,6 +123,41 @@ namespace BasicDataTypes
 
             // Add 4 blank lines and produce another beep
             Console.WriteLine("All finished. \n\n\n\a");
+
+            // The following string is printed verbatim
+            // thus all escape characters are displayed
+            Console.WriteLine(@"C:\MyApp\bin\Debug\");
+            // White space is preserved in verbatim strings
+            string anotherString = @"This 
+                                            is
+            
+                                                    a string!";
+            Console.WriteLine(anotherString);
+            
+            // Example with quotes
+            Console.WriteLine(@"Everyone likes ""Hello, World!""");
+
+            Console.WriteLine();
+
+        }
+
+        static void FunWithStringBuilder()
+        {
+            Console.WriteLine("=> Using the StringBuilder");
+            StringBuilder sb = new StringBuilder("**** Some Games ****");
+            sb.Append("\n");
+            sb.AppendLine("FIFA");
+            sb.AppendLine("Football Manager");
+            sb.AppendLine("Need For Speed");
+            sb.AppendLine("GTA: Vice City");
+            Console.WriteLine(sb.ToString());
+            sb.Replace("IFA", "OUND");
+            Console.WriteLine(sb.ToString());
+            Console.WriteLine("sb has {0} chars", sb.Length);
+            
+            // Make a StringBuilder with an onitial size of 512
+            StringBuilder anotherSB = new StringBuilder("Hello!", 512);
+
             Console.WriteLine();
         }
     }
