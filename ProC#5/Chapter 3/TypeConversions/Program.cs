@@ -29,6 +29,7 @@ namespace TypeConversions
             NarrowingAttempt();
             ProcessBytes();
             DeclareImplicitVars();
+            LinqQueryOverInts();
 
             Console.ReadLine();
 
@@ -105,5 +106,27 @@ namespace TypeConversions
             Console.WriteLine("aBool is a: {0}", aBool.GetType().Name);
             Console.WriteLine("aString is a: {0}", aString.GetType().Name);
         }
+
+        static void LinqQueryOverInts()
+        {
+            int[] numbers = { 10, 20, 30, 40, 1, 2, 3, 8 };
+            
+            //LINQ Query
+            var subset = from i in numbers where i < 10 select i;
+
+            Console.WriteLine("Values in subset:");
+            foreach (var i in subset)
+            {
+                Console.WriteLine("{0} ", i);
+            }
+            Console.WriteLine();
+
+            // What type is a subset?
+            Console.WriteLine("subset is a: {0}", subset.GetType().Name);
+            Console.WriteLine("subset is defined in: {0}", subset.GetType().Namespace);
+        }
+
     }
+
+    
 }
