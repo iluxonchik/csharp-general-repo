@@ -30,6 +30,7 @@ namespace TypeConversions
             ProcessBytes();
             DeclareImplicitVars();
             LinqQueryOverInts();
+            SwitchOnStringExample();
 
             Console.ReadLine();
 
@@ -126,6 +127,24 @@ namespace TypeConversions
             Console.WriteLine("subset is defined in: {0}", subset.GetType().Namespace);
         }
 
+        void SwitchOnStringExamaple()
+        {
+            Console.WriteLine("C# or VB");
+            string langChoice = Console.ReadLine();
+
+            switch (langChoice)
+            {
+                case "C#":
+                    Console.WriteLine("Good choice, C# is a nice language!");
+                    break;
+                case "VB":
+                    Console.WriteLine("VB: OOP, multithreading and more!");
+                    break;
+                default:
+                    Console.WriteLine("Neither C# nor VB? Aight then...");
+                    break;
+            }
+        }
     }
 
     
