@@ -89,5 +89,44 @@ namespace FunWithMethods
             Console.ForegroundColor = oldTextColor;
 
         }
+
+        // Example of an overloaded method
+        static int Add(int x, int y)
+        {
+            return x + y;
+        }
+        static double Add(double x, double y)
+        {
+            return x + y;
+        }
+        static long Add(long x, long y)
+        {
+            return x + y;
+        }
+
+        static void DeclareImplicitArrays()
+        {
+            // a is really an int[]
+            var a = new[] { 1, 2, 3 };
+
+            // b is really a double[]
+            var b = new[] { 1.0, 1.2, 26.08 };
+
+            // c is really  astring[]
+            var c = new[] { "Hello", ",", "World", "!" };
+        }
+
+        static void ArrayOfObjects()
+        {
+            // An array of objects can contain different data types
+            object[] someObjects = new object[4];
+            someObjects[0] = 10;
+            someObjects[1] = false;
+            someObjects[2] = new DateTime(1990, 3, 25);
+            someObjects[3] = "Hello there!";
+            foreach(object obj in someObjects)
+                Console.WriteLine("Type: {0}, Value: {1}", obj.GetType(), obj);
+            Console.WriteLine();
+        }
     }
 }
