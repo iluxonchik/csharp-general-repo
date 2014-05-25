@@ -128,5 +128,46 @@ namespace FunWithMethods
                 Console.WriteLine("Type: {0}, Value: {1}", obj.GetType(), obj);
             Console.WriteLine();
         }
+
+        static void RectMultidmensionalArray()
+        {
+            // A rectangular MD array
+            int[,] aMatrix;
+            aMatrix = new int[6, 6]; // 6x6 array
+
+            // Populate the array
+            for (int i = 0; i < 6; i++)
+                for(int j=0; j<6;j++)
+                    aMatrix[i,j] = i*j;
+
+            // Print the array
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                    Console.WriteLine(aMatrix[i,j] + "\t");
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+        static void JaggedMDArray()
+        {
+            // A jagged multi dimensional array (i.e. an array of arrays)
+            // Below is an example of an array of 5 different arrays
+            int[][] aJagArr = new int[5][];
+            
+            //Create the jagged array
+            for (int i = 0; i < aJagArr.Length; i++)
+                aJagArr[i] = new int[i+7]; // the sub arrays will be auto filled with 0's
+
+            // Print each row
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < aJagArr.Length; j++)
+                    Console.WriteLine(aJagArr[i][j] + " ");
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
     }
 }
