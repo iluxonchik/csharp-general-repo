@@ -6,10 +6,49 @@ using System.Threading.Tasks;
 
 namespace FunWithMethods
 {
+
+    // Controlling the underlying storage of an enum
+    enum EnumType : byte // EnumType now maps to an underlying byte
+    {
+        Manager = 10,
+        Grunt = 1,
+        Contractor = 100,
+        VicePresident = 9,
+    }
+
+    struct Point
+    {
+        // Fields of the structure
+        public int x;
+        public int y;
+
+        public void Increment()
+        {
+            x++; y++;
+        }
+
+        public void Decrement()
+        {
+            x--; y--;
+        }
+
+        public void Desplay()
+        {
+            Console.WriteLine("x = {0}, y = {0}", x, y);
+        }
+    }
+
     class Program
     {
+
         static void Main(string[] args)
         {
+            // Declaring some struct vars
+            Point p1 = new Point(); // set all struct values to default
+            Point p2; // set all initial values manually
+            p2.x = 1;
+            p2.y = 1;
+
             // Some examples of invoking methods using named parameters
             DisplayFancyMessage(message: "Hello", textColor: ConsoleColor.Blue, backgroundColor: ConsoleColor.Cyan);
             DisplayFancyMessage(ConsoleColor.Yellow, message: "Once again, Hello!", backgroundColor: ConsoleColor.Blue);
@@ -169,5 +208,14 @@ namespace FunWithMethods
             }
             Console.WriteLine();
         }
+
+        static void SystemArrayFunctionality()
+        {
+            string[] arrOfStrs = { "Hello", "there", "!" };
+            Array.Reverse(arrOfStrs); // reverse the array
+            Array.Clear(arrOfStrs, 1, 2); // clear all out but the final member
+        }
+
+
     }
 }
