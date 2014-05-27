@@ -32,10 +32,19 @@ namespace FunWithMethods
             x--; y--;
         }
 
-        public void Desplay()
+        public void Display()
         {
-            Console.WriteLine("x = {0}, y = {0}", x, y);
+            Console.WriteLine("x = {0}, y = {1}", x, y);
         }
+    }
+
+    public abstract class ValueType : object
+    {
+        public virtual bool Equals(object obj);
+        public virtual int GetHashCode();
+        public Type GetType();
+        public virtual string ToString();
+
     }
 
     class Program
@@ -215,7 +224,5 @@ namespace FunWithMethods
             Array.Reverse(arrOfStrs); // reverse the array
             Array.Clear(arrOfStrs, 1, 2); // clear all out but the final member
         }
-
-
     }
 }
