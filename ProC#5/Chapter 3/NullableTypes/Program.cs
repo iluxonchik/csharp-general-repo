@@ -6,10 +6,48 @@ using System.Threading.Tasks;
 
 namespace NullableTypes
 {
+
+    class DatabseReader
+    {
+        // Nullable data field.
+        public int? numericValue = null;
+        public bool? boolValue = true;
+
+        // Note the nullable return type.
+        public int? GetIntFromDatabase()
+        { return numericValue; }
+
+        // Note the nullable return type.
+        public bool? GetBoolFromDatabase()
+        { return boolValue; }
+
+    }
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("**** Fun With Nullable Data ****\n");
+            DatabseReader dr = new DatabseReader();
+
+            // Get int from database
+            int? i = dr.GetIntFromDatabase();
+            if (i.HasValue)
+                // If i is not null.
+                Console.WriteLine("Value of i is: {0}", i);
+            else
+                Console.WriteLine("Value of i is undefined.");
+
+            // Get bool from database
+            bool? b = dr.GetBoolFromDatabase();
+            if (b!=null)
+                Console.WriteLine("Value of b is: {0}", b);
+            else
+                Console.WriteLine("b is undefined");
+
+            // If dr.GetIntFromDatabse() is null, assign 100 to i
+            int someData = dr.GetIntFromDatabase() ?? 100; // note here "int?" is not necessary, since "someData" will not be assigned null
+            Console.WriteLine("Value of someData is: {0}", someData);
+
         }
 
         static void LocalNullableVars()
