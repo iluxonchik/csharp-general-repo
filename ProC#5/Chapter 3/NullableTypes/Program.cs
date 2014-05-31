@@ -48,6 +48,7 @@ namespace NullableTypes
             int someData = dr.GetIntFromDatabase() ?? 100; // note here "int?" is not necessary, since "someData" will not be assigned null
             Console.WriteLine("Value of someData is: {0}", someData);
 
+            Console.ReadLine();
         }
 
         static void LocalNullableVars()
