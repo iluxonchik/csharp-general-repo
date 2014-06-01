@@ -17,14 +17,19 @@ namespace SimpleClassExample
                 Console.WriteLine("Yahoooo!");
         }
 
-        // Put back the default constuctor, which will
-        // set all data members to default values
+        // Constructor chaining
         public Motorcycle() { }
+        public Motorcycle(int intensity) : this(intensity, "") { }
+        public Motorcycle(string name)
+            : this(0, name){ }
 
-        // A custum constructor
-        public Motorcycle(int intensity)
+        // This is the 'master' constructor that does all the real work
+        public Motorcycle(int intensity, string name)
         {
+            if (intensity > 10)
+                intensity = 10;
             this.driverIntensity = intensity;
+            this.driverName = name;
         }
 
         public void setDriverName(string driverName)
