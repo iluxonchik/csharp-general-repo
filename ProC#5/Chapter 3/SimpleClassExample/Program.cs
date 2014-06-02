@@ -23,6 +23,20 @@ namespace SimpleClassExample
                 aCar.PrintState();
             }
 
+            Console.WriteLine("\n**** Fun With Static Data ****");
+            Account a1 = new Account(50);
+            Account a2 = new Account(100);
+
+ 
+            // Print the current intRate
+            Console.WriteLine("Int Rate: {0}", Account.GetIntRate());
+
+            Account.SetIntRate(0.05);
+
+            // Make a new object, this does not reset the intRate!
+            Account s3 = new Account(10000.75);
+            Console.WriteLine("Int Rate: {0}", Account.GetIntRate());
+
             Console.ReadLine();
         }
     }
