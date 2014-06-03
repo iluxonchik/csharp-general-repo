@@ -25,16 +25,16 @@ namespace SimpleClassExample
 
             Console.WriteLine("\n**** Fun With Static Data ****");
             Account a1 = new Account(50);
-            Account a2 = new Account(100);
-
  
             // Print the current intRate
             Console.WriteLine("Int Rate: {0}", Account.GetIntRate());
 
-            Account.SetIntRate(0.05);
+            // Try to change the int rate via property
+            Account.SetIntRate(0.08);
 
-            // Make a new object, this does not reset the intRate!
-            Account s3 = new Account(10000.75);
+            // Make a second account
+            Account a2 = new Account(100);
+
             Console.WriteLine("Int Rate: {0}", Account.GetIntRate());
 
             Console.ReadLine();

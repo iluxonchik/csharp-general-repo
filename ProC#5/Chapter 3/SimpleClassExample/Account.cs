@@ -12,10 +12,16 @@ namespace SimpleClassExample
         public double currBal;
 
         // A static point data
-        public static double currIntRate = 0.04;
+        public static double currIntRate;
         public Account(double balance)
         {
-            this.currBal = balance;
+            currBal = balance;
+        }
+
+        static Account()
+        {
+            Console.WriteLine("In static ctor!");
+            currIntRate = 0.04;
         }
 
         // Static members to get(set the int rate
