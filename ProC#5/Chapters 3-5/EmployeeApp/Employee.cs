@@ -13,22 +13,34 @@ namespace EmployeeApp
         private int empID;
         private float currPay;
 
-        // Acessor (get method)
-        public string GetName()
+        // Propreties!
+        public string Name
         {
-            return this.empName;
+            get { return this.empName; }
+            set
+            {
+                if (value.Length > 15)
+                    Console.WriteLine("Error! Name must be 16 chars or less");
+                else
+                    this.empName = value;
+            }
         }
 
-        // Mutator (set method)
-        public void SetName(string name)
+        // The 'int' represents the type of data this proprety encapsulates
+        // The data type must be identical to the related field (this.empID)
+        public int ID
         {
-            // Perform a check on the incoming
-            // value before making the assignment
-            if (name.Length > 15)
-                Console.WriteLine("Error! Name must be 16 characters or less!");
-            else
-                this.empName = name;
+            get { return this.empID; }
+            set { this.empID = value; }
         }
+        public float pay
+        {
+            get { return this.currPay; }
+            set { this.currPay = value; }
+        }
+
+
+
         // Constructor
         public Employee() { }
         public Employee(string name, int id, float pay)
