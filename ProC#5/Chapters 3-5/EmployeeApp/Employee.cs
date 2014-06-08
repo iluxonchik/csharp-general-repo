@@ -12,8 +12,15 @@ namespace EmployeeApp
         private string empName;
         private int empID;
         private float currPay;
+        private int empAge;
 
         // Propreties!
+
+        public int Age
+        {
+            get { return this.empAge; }
+            set { this.empAge = value; }
+        }
         public string Name
         {
             get { return this.empName; }
@@ -43,11 +50,15 @@ namespace EmployeeApp
 
         // Constructor
         public Employee() { }
+
         public Employee(string name, int id, float pay)
+            : this(name, 0, id, pay) { } // if 'age' is skipped, it's set to 0
+        public Employee(string name, int age, int id, float pay)
         {
             this.empName = name;
             this.empID = id;
             this.currPay = pay;
+            this.empAge = age;
         }
 
         // Methods
@@ -60,6 +71,7 @@ namespace EmployeeApp
         {
             Console.WriteLine("Name: {0}", this.empName);
             Console.WriteLine("ID: {0}", this.empID);
+            Console.WriteLine("Age: {0}", this.empAge);
             Console.WriteLine("Pay: {0}", this.currPay);
         }
     }

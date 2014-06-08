@@ -22,6 +22,14 @@ namespace EmployeeApp
             emp.Name = "Marv"; // 'Name' is the name of the property
             Console.WriteLine("Employee is named: {0}", emp.Name);
 
+            Employee joe = new Employee();
+            joe.Age++;
+
+            /* Using the traditional acessor and mutator methods, the line above
+             * would look something like: 
+             * joe.SetAge(joe.GetAge() + 1);
+             */
+
             Console.ReadLine();
         }
     }
