@@ -24,8 +24,7 @@ namespace EmployeeApp
 
             Employee joe = new Employee();
             joe.Age++;
-
-            /* Using the traditional acessor and mutator methods, the line above
+             /* Using the traditional acessor and mutator methods, the line above
              * would look something like: 
              * joe.SetAge(joe.GetAge() + 1);
              */
