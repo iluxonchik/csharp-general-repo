@@ -13,6 +13,15 @@ namespace AutoProps
         public int Speed { get; set; }
         public string Color { get; set; }
 
+        // Constructors
+        public Car(string name, int speed, string color)
+        {
+            this.PetName = name;
+            this.Speed = speed;
+            this.Color = color;
+        }
+        public Car() :this("Default Car PetName", 100, "Blue") { }
+
         public void DispayStats()
         {
             Console.WriteLine("Car Name: {0}", PetName);
