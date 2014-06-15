@@ -27,6 +27,18 @@ namespace ObjectInitializers
             // followed by setting the values to the specified properties.
             Point finalPoint = new Point { X = 30, Y = 30 };
             finalPoint.DisplayStats();
+
+            // Calling another constructor with init sytax
+            Point goldPoint = new Point(PointColor.Gold) { X = 90, Y = 20 };
+            goldPoint.DisplayStats();
+
+            // Create and initialize a Rectangle
+            Rectangle aRect = new Rectangle
+            {
+                TopLeft = new Point { X = 10, Y = 10 },
+                BottomRight = new Point { X = 200, Y = 200 }
+            };
+
             Console.ReadLine();
         }
     }
