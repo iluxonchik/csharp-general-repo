@@ -11,7 +11,7 @@ namespace EmployeeApp
         static void Main(string[] args)
         {
             Console.WriteLine("**** Fun With Encapsulation ****\n");
-            Employee emp = new Employee("Marvin", 456, 30000);
+            Employee emp = new Employee("Marvin", 456, 30000,"123");
             emp.GiveBonus(1000);
             emp.DisplayStats();
 
