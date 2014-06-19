@@ -10,6 +10,7 @@ namespace ExtractIndividualFiles
     {
         public static string extractionPath;
         public static string zipPath;
+        public static string fileExtension;
          
     }
 }

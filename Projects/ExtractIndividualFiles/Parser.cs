@@ -70,6 +70,22 @@ namespace ExtractIndividualFiles
                  *  + if the user answers 'yes'
                  *  + if the user answers 'no'
                  */
+                if (userOpt == Option.yes)
+                {
+                    try
+                    {
+                        DirectoryInfo newDir = Directory.CreateDirectory(ExtractionInfo.extractionPath);
+                        Console.WriteLine("Directory created sucessfully!");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Directory creation failed!");
+                        Console.WriteLine("{0}",e.ToString() );
+                    }
+                    finally { }
+                }
+                    
+
 
             }
 
