@@ -18,7 +18,7 @@ namespace ExtractIndividualFiles
         };
 
         Option userOpt;
-        private bool zipDirSet = false; // tracks if the zip file directory has been set
+        private bool outDirSet = false; // tracks if the output file directory has been set
         private string optionInput;
 
         private bool processOpt(string option)
@@ -45,7 +45,7 @@ namespace ExtractIndividualFiles
 
         public void processInput()
         {
-            
+            Console.WriteLine("ZIP file path:");
             ExtractionInfo.zipPath = Console.ReadLine(); // read the zip path
 
             while (!File.Exists(ExtractionInfo.zipPath))
@@ -53,39 +53,58 @@ namespace ExtractIndividualFiles
                 Console.WriteLine("Invalid zip file path. Please enter a valid one: ");
                 ExtractionInfo.zipPath = Console.ReadLine();
             }
-            
-            ExtractionInfo.extractionPath = Console.ReadLine(); // read the extraction path
 
-            if (!Directory.Exists(ExtractionInfo.extractionPath))
-            {
-                Console.WriteLine("The {0} directory does not exist.", ExtractionInfo.extractionPath);
-                Console.WriteLine("Would you like to create it?");
-                
-                OptionInput = Console.ReadLine().ToLower();
-                // Process user's option input
-                while (!processOpt(OptionInput))
-                    // While the input is not valid, keep prompting
-                    Console.WriteLine("Please answer 'yes' or 'no' "); // 'exit' works here too
-                /*  TODO: 
-                 *  + if the user answers 'yes'
-                 *  + if the user answers 'no'
-                 */
-                if (userOpt == Option.yes)
+            while (!outDirSet) {
+                Console.WriteLine("Ouput path: ");
+                ExtractionInfo.extractionPath = Console.ReadLine(); // read the extraction path
+
+                if (!Directory.Exists(ExtractionInfo.extractionPath))
                 {
-                    try
-                    {
-                        DirectoryInfo newDir = Directory.CreateDirectory(ExtractionInfo.extractionPath);
-                        Console.WriteLine("Directory created sucessfully!");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Directory creation failed!");
-                        Console.WriteLine("{0}",e.ToString() );
-                    }
-                    finally { }
-                }
-                    
+                    Console.WriteLine("The {0} directory does not exist.", ExtractionInfo.extractionPath);
+                    Console.WriteLine("Would you like to create it?");
 
+                    OptionInput = Console.ReadLine().ToLower();
+                    // Process user's option input
+                    while (!processOpt(OptionInput))
+                        // While the input is not valid, keep prompting
+                        Console.WriteLine("Please answer 'yes' or 'no' "); // 'exit' works here too
+                    /*  TODO: 
+                     *  + if the user answers 'yes'
+                     *  + if the user answers 'no'
+                     */
+                    if (userOpt == Option.yes)
+                    {
+                        try
+                        {
+                            DirectoryInfo newDir = Directory.CreateDirectory(ExtractionInfo.extractionPath);
+                            Console.WriteLine("Directory created sucessfully!");
+                            outDirSet = true;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Directory creation failed!");
+                            Console.WriteLine("{0}", e.ToString());
+                        }
+                        finally { }
+                    }
+                    else if (userOpt == Option.exit)
+                    {
+                        return;
+
+                    }
+                    else
+                    {
+                        // if user types 'no'
+                        Console.WriteLine("You will be prompted for a new path");
+                    }
+
+                }
+                else
+                {
+                    // The path is valid
+                    outDirSet = true;
+
+                }
 
             }
 
