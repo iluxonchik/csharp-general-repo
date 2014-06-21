@@ -48,8 +48,6 @@ namespace ExtractIndividualFiles
             
         }
 
-       
-
         public bool processZipPath(string userZipPath)
         {
             /* This function processes the zip file path input 
@@ -59,6 +57,12 @@ namespace ExtractIndividualFiles
             {
                 // If the file does not exist
                 Console.WriteLine("The specified zip file does not exist");
+                return false;
+            }
+            else if (!userZipPath.EndsWith(".zip"))
+            {
+                // User did not provide a zip file
+                Console.WriteLine("Please provide a valid zip file path");
                 return false;
             }
             else
@@ -90,7 +94,6 @@ namespace ExtractIndividualFiles
 
                 if (userOpt == Option.yes)
                 {
-                    userOpt = Option.blank; // clear the selected option
                     // User answered yes, create the directory!
                     try
                     {
@@ -112,8 +115,14 @@ namespace ExtractIndividualFiles
                 {
                     return false;
                 }
+                else if (userOpt == Option.exit)
+                {
+                    Environment.Exit(0); // terminate the program execution
+                    return false;
+                }
                 else
                 {
+                    // Something went wrong
                     return false;
                 }
                 
@@ -126,7 +135,6 @@ namespace ExtractIndividualFiles
             }
             
         }
-
 
         // Properties
         private string OptionInput { set; get; }
