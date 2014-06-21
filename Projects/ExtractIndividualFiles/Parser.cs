@@ -14,12 +14,17 @@ namespace ExtractIndividualFiles
             exit,
             yes,
             no,
-            error
+            blank // blank option means no option has been selected
         };
 
         Option userOpt;
         private bool outDirSet = false; // tracks if the output file directory has been set
         private string optionInput;
+
+        private void printAvailableCommands()
+        {
+            Console.WriteLine("Available commands: yes, no, exit");
+        }
 
         private bool processOpt(string option)
         {
@@ -43,73 +48,85 @@ namespace ExtractIndividualFiles
             
         }
 
-        public void processInput()
-        {
-            Console.WriteLine("ZIP file path:");
-            ExtractionInfo.zipPath = Console.ReadLine(); // read the zip path
+       
 
-            while (!File.Exists(ExtractionInfo.zipPath))
+        public bool processZipPath(string userZipPath)
+        {
+            /* This function processes the zip file path input 
+             * Returns true in case a valid path has been set, false otherwise
+             */
+            if (!File.Exists(userZipPath))
             {
-                Console.WriteLine("Invalid zip file path. Please enter a valid one: ");
-                ExtractionInfo.zipPath = Console.ReadLine();
+                // If the file does not exist
+                Console.WriteLine("The specified zip file does not exist");
+                return false;
+            }
+            else
+            {
+                // File exists, everything is OK
+                ExtractionInfo.zipPath = userZipPath;
+                return true;
             }
 
-            while (!outDirSet) {
-                Console.WriteLine("Ouput path: ");
-                ExtractionInfo.extractionPath = Console.ReadLine(); // read the extraction path
+        }
 
-                if (!Directory.Exists(ExtractionInfo.extractionPath))
+        public bool processExtrPath(string userDir)
+        {
+            /* This function processes the extraction path input.
+             * Returns true in case a valid path has been set, false otherwise.
+             */
+
+            Option userOpt = Option.blank;
+
+            if (!Directory.Exists(userDir))
+            {
+                // If the file does not exist
+                Console.WriteLine("The specified path file not exist, would you like to create it?");
+                while (!processOpt(Console.ReadLine()))
                 {
-                    Console.WriteLine("The {0} directory does not exist.", ExtractionInfo.extractionPath);
-                    Console.WriteLine("Would you like to create it?");
+                    Console.WriteLine("Invalid input");
+                    this.printAvailableCommands();
+                }
 
-                    OptionInput = Console.ReadLine().ToLower();
-                    // Process user's option input
-                    while (!processOpt(OptionInput))
-                        // While the input is not valid, keep prompting
-                        Console.WriteLine("Please answer 'yes' or 'no' "); // 'exit' works here too
-                    /*  TODO: 
-                     *  + if the user answers 'yes'
-                     *  + if the user answers 'no'
-                     */
-                    if (userOpt == Option.yes)
+                if (userOpt == Option.yes)
+                {
+                    userOpt = Option.blank; // clear the selected option
+                    // User answered yes, create the directory!
+                    try
                     {
-                        try
-                        {
-                            DirectoryInfo newDir = Directory.CreateDirectory(ExtractionInfo.extractionPath);
-                            Console.WriteLine("Directory created sucessfully!");
-                            outDirSet = true;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Directory creation failed!");
-                            Console.WriteLine("{0}", e.ToString());
-                        }
-                        finally { }
+                        // Try and create the directory
+                        Directory.CreateDirectory(userDir);
+                        Console.WriteLine("Directory created successfully!");
+                        ExtractionInfo.extractionPath = userDir;
+                        return true;
+                        
                     }
-                    else if (userOpt == Option.exit)
+                    catch (Exception e)
                     {
-                        return;
-
+                        Console.WriteLine("Directory creation failed: {0}", e.ToString());
+                        return false;
                     }
-                    else
-                    {
-                        // if user types 'no'
-                        Console.WriteLine("You will be prompted for a new path");
-                    }
-
+                    finally { }
+                }
+                else if (userOpt == Option.no)
+                {
+                    return false;
                 }
                 else
                 {
-                    // The path is valid
-                    outDirSet = true;
-
+                    return false;
                 }
-
+                
             }
-
+            else
+            {
+                // Valid path
+                ExtractionInfo.extractionPath = userDir;
+                return true;
+            }
             
         }
+
 
         // Properties
         private string OptionInput { set; get; }
