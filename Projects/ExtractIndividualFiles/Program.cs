@@ -8,8 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
+
 
 /* TODO:
  * + Read file extension from user input.
@@ -24,22 +23,9 @@ namespace ExtractIndividualFiles
     {
         static void Main(string[] args)
         {
-            string zipPath = @"c:\example\example.zip"; // path to zip file
-            string extractPath = @"c:\example\extract"; // where to extract the files
-            string fileExtension = ".txt"; // desired file extension to extract
+           
 
-            using (ZipArchive archive = ZipFile.OpenRead(zipPath))
-            {
-                foreach (ZipArchiveEntry entry in archive.Entries)
-                {
-                    // for every entry (aka file) in the zip archive
-                    if (entry.FullName.EndsWith(fileExtension,  StringComparison.OrdinalIgnoreCase))
-                    {
-                        // if the file's name ends with the desired extension, extract it!
-                        entry.ExtractToFile(Path.Combine(extractPath, entry.FullName));
-                    }
-                }
-            }
+            
         }
     }
 }

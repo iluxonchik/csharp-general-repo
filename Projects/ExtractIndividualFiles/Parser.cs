@@ -136,6 +136,12 @@ namespace ExtractIndividualFiles
             
         }
 
+        public void processExtension(string userExt)
+        {
+            /*  Processes the extension of files to be extracted */
+            ExtractionInfo.fileExtension = userExt;
+        }
+
         // Properties
         private string OptionInput { set; get; }
 
