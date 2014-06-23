@@ -17,7 +17,7 @@ namespace ExtractIndividualFiles
             blank // blank option means no option has been selected
         };
 
-        Option userOpt;
+        Option userOpt = Option.blank;
         private bool outDirSet = false; // tracks if the output file directory has been set
         private string optionInput;
 
@@ -28,6 +28,7 @@ namespace ExtractIndividualFiles
 
         private bool processOpt(string option)
         {
+            option = option.ToLower();
             if (option == "yes" || option == "y")
             {
                 userOpt = Option.yes;
@@ -80,8 +81,6 @@ namespace ExtractIndividualFiles
              * Returns true in case a valid path has been set, false otherwise.
              */
 
-            Option userOpt = Option.blank;
-
             if (!Directory.Exists(userDir))
             {
                 // If the file does not exist
@@ -113,16 +112,19 @@ namespace ExtractIndividualFiles
                 }
                 else if (userOpt == Option.no)
                 {
+                    userOpt = Option.blank;
                     return false;
                 }
                 else if (userOpt == Option.exit)
                 {
+                    userOpt = Option.blank;
                     Environment.Exit(0); // terminate the program execution
                     return false;
                 }
                 else
                 {
                     // Something went wrong
+                    userOpt = Option.blank;
                     return false;
                 }
                 

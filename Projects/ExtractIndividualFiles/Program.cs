@@ -23,8 +23,19 @@ namespace ExtractIndividualFiles
     {
         static void Main(string[] args)
         {
-           
 
+            Parser parser = new Parser();
+            Console.WriteLine("ZIP file path: ");
+            while (!parser.processZipPath(Console.ReadLine())) ;
+
+            Console.WriteLine("Extraction path: ");
+            while (!parser.processExtrPath(Console.ReadLine())) ;
+
+            Console.WriteLine("Extension to extract: ");
+            parser.processExtension(Console.ReadLine());
+
+            Extractor extractor = new Extractor();
+            extractor.extractFiles();
             
         }
     }
