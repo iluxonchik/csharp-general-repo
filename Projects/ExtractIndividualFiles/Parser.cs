@@ -29,6 +29,7 @@ namespace ExtractIndividualFiles
         private bool processOpt(string option)
         {
             option = option.ToLower();
+
             if (option == "yes" || option == "y")
             {
                 userOpt = Option.yes;
