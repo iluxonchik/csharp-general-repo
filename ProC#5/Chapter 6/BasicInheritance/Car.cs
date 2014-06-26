@@ -11,7 +11,7 @@ namespace BasicInheritance
         public readonly int maxSpeed;
         private int currSpeed;
 
-        public Car (int max)
+        public Car(int max)
         {
             maxSpeed = max;
         }

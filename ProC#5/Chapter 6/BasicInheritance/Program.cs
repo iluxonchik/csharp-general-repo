@@ -17,6 +17,17 @@ namespace BasicInheritance
             // Set the current speed and print it
             aCar.Speed = 50;
             Console.WriteLine("The car is going on {0} MPH", aCar.Speed);
+            
+            // Make a MiniVan object
+            MiniVan aVan = new MiniVan();
+            aVan.Speed = 10;
+            Console.WriteLine("The MiniVan is going at {0}", aVan.Speed);
+            /* 
+             * ERROR: Can't access private members
+             * aVan.currSpeed = 55;
+             */
+
+
             Console.ReadLine();
         }
     }
