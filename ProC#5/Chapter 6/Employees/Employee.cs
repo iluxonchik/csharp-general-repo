@@ -8,7 +8,12 @@ namespace Employees
 {
     partial class Employee
     {
-        
+        // Derived classes can now directly acess this information
+        protected string empName;
+        protected int empID;
+        protected float currPay;
+        protected int empAge;
+        protected string empSSN;
         // Propreties!
         public int Age
         {
