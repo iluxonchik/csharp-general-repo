@@ -8,62 +8,20 @@ namespace Employees
 {
     partial class Employee
     {
-        // Derived classes can now directly acess this information
-        protected string empName;
-        protected int empID;
-        protected float currPay;
-        protected int empAge;
-        protected string empSSN;
-        // Propreties!
-        public int Age
-        {
-            get { return this.empAge; }
-            set { this.empAge = value; }
-        }
-        public string Name
-        {
-            get { return this.empName; }
-            set
-            {
-                if (value.Length > 15)
-                    Console.WriteLine("Error! Name must be 16 chars or less");
-                else
-                    this.empName = value;
-            }
-        }
 
-        public string SSN
-        {
-            // There is no 'set' method. This property is Read-Only
-            get
-            {return this.empSS;}
-        }
-
-        // The 'int' represents the type of data this proprety encapsulates
-        // The data type must be identical to the related field (this.empID)
-        public int ID
-        {
-            get { return this.empID; }
-            set { this.empID = value; }
-        }
-        public float Pay
-        {
-            get { return this.currPay; }
-            set { this.currPay = value; }
-        }
-
+        // Propreties!    
         // Methods
         public void GiveBonus(float amount)
         {
-            Pay += amount;
+            this.currPay += amount;
         }
 
         public void DisplayStats()
         {
-            Console.WriteLine("Name: {0}", this.Name);
-            Console.WriteLine("ID: {0}", this.ID);
-            Console.WriteLine("Age: {0}", this.Age);
-            Console.WriteLine("Pay: {0}", this.Pay);
+            Console.WriteLine("Name: {0}", this.empName);
+            Console.WriteLine("ID: {0}", this.empID);
+            Console.WriteLine("Age: {0}", this.empAge);
+            Console.WriteLine("Pay: {0}", this.currPay);
         }
     }
 }

@@ -8,12 +8,12 @@ namespace Employees
 {
    partial class Employee
     {
-        // Field data
-        private string empName;
-        private int empID;
-        private float currPay;
-        private int empAge;
-        private string empSS;
+        // Derived classes can now directly acess this information
+        protected string empName;
+        protected int empID;
+        protected float currPay;
+        protected int empAge;
+        protected string empSSN;
 
        // Constructors
        public Employee() { }
@@ -23,11 +23,11 @@ namespace Employees
         // if ssn is skipped it gets set to "1234"
         public Employee(string name, int age, int id, float pay, string ssn)
         {
-            Name = name;
-            Age = age;
-            ID = id;
-            Pay = pay;
-            this.empSS = ssn; // SSN = ssn; would not work, the property is Read-Only!
+            this.empName = name;
+            this.empAge = age;
+            this.empID = id;
+            this.currPay = pay;
+            this.empSSN = ssn;
         }
 
     }
