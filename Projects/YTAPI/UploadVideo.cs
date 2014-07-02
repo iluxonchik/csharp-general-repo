@@ -24,13 +24,13 @@ namespace YTAPI
         // Propreties
         public string Title { set; get;}
         public string Description { set; get; }
-        public string Tags { set; get; }
+        public string[] Tags { set; get; }
         public string CategotyId { set; get; }
         public string FilePath { set; get; }
         public string PrivacyStatus { set; get; }
 
         // Constructors
-        public UploadVideo(string title, string description, string tags, string categoryId, string privacyStatus, string filePath)
+        public UploadVideo(string title, string description, string[] tags, string categoryId, string privacyStatus, string filePath)
         {
             Title = title;
             Description = description;
@@ -38,9 +38,10 @@ namespace YTAPI
             CategotyId = categoryId;
             PrivacyStatus = privacyStatus;
             FilePath = filePath;
+
         }
 
-        public UploadVideo(string title,  string description, string tags, string categoryId, string filePath)
+        public UploadVideo(string title,  string description, string[] tags, string categoryId, string filePath)
             : this(title, description, tags, categoryId, "unlisted", filePath) { } // if the privacyStatus is skipped
 
         private async Task Run()
@@ -66,13 +67,13 @@ namespace YTAPI
 
             var video = new Video();
             video.Snippet = new VideoSnippet();
-            video.Snippet.Title = "Default Video Title";
-            video.Snippet.Description = "Default Video Description";
-            video.Snippet.Tags = new string[] { "tag1", "tag2" };
-            video.Snippet.CategoryId = "22"; // See https://developers.google.com/youtube/v3/docs/videoCategories/list
+            video.Snippet.Title = Title;
+            video.Snippet.Description = Description;
+            video.Snippet.Tags = Tags;
+            video.Snippet.CategoryId = CategotyId; // See https://developers.google.com/youtube/v3/docs/videoCategories/list
             video.Status = new VideoStatus();
-            video.Status.PrivacyStatus = "unlisted"; // or "private" or "public"
-            var filePath = @"REPLACE_ME.mp4"; // Replace with path to actual movie file.
+            video.Status.PrivacyStatus = PrivacyStatus; // or "private" or "public"
+            var filePath = FilePath; // Replace with path to actual movie file.
 
             using (var fileStream = new FileStream(filePath, FileMode.Open))
             {
@@ -86,14 +87,18 @@ namespace YTAPI
 
         void videosInsertRequest_ProgressChanged(Google.Apis.Upload.IUploadProgress progress)
         {
+            Form1 form = new Form1(); // create a reference to Form1 to be able to change its contents from this class
+
             switch (progress.Status)
             {
                 case UploadStatus.Uploading:
-                    Console.WriteLine("{0} bytes sent.", progress.BytesSent);
+                    form.UpdateStatusLabel(progress.BytesSent + "bytes sent.");
+                    //Console.WriteLine("{0} bytes sent.", progress.BytesSent);
                     break;
 
                 case UploadStatus.Failed:
-                    Console.WriteLine("An error prevented the upload from completing.\n{0}", progress.Exception);
+                    form.UpdateStatusLabel("An error prevented the upload from completing.\n" + progress.Exception);
+                    //Console.WriteLine("An error prevented the upload from completing.\n{0}", progress.Exception);
                     break;
             }
         }

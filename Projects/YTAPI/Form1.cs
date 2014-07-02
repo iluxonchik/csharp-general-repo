@@ -16,5 +16,14 @@ namespace YTAPI
         {
             InitializeComponent();
         }
+
+        public void UpdateStatusLabel(string text)
+        {
+            this.lblStatus.Text = text;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
