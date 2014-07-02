@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace YTAPI
 {
+    // This is an utility class. It contains some development info, such as the API Key.
+    // Do not share this info publicly!
     static class DevInfo
     {
-        public static const string AppName = "ola"; // App name
-        public static const string DevKey = "ola";  // Developer Key
+        public static string ApplicationName = "";
+        public static string APIKey= "";
     }
 }
