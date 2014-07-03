@@ -10,7 +10,7 @@ namespace YTAPI
     // Do not share this info publicly!
     static class DevInfo
     {
-        public static string ApplicationName = "";
-        public static string APIKey= "";
+        public static string ApplicationName = "YTAPI";
+        public static string APIKey = "AIzaSyD_WaTmcuZ42qmkxQPt9_4J9giHL3mSgnM";
     }
 }
