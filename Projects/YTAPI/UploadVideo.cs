@@ -27,6 +27,7 @@ namespace YTAPI
 {
     class UploadVideo
     {
+
         // Propreties
         public string Title { set; get;}
         public string Description { set; get; }
@@ -81,9 +82,16 @@ namespace YTAPI
 
             using (var fileStream = new FileStream(filePath, FileMode.Open))
             {
+                const int KB = 1024;
+                var minimumChunkSize = 256 * KB;
+
                 var videosInsertRequest = youtubeService.Videos.Insert(video, "snippet,status", fileStream, "video/*");
                 videosInsertRequest.ProgressChanged += videosInsertRequest_ProgressChanged;
                 videosInsertRequest.ResponseReceived += videosInsertRequest_ResponseReceived;
+
+                // Using chunks of size 1MB
+                videosInsertRequest.ChunkSize = minimumChunkSize * 4; 
+
                 videosInsertRequest.Upload();
             }
         }
@@ -91,15 +99,15 @@ namespace YTAPI
 
         private static void videosInsertRequest_ResponseReceived(Video obj)
         {
-            Form1 form = new Form1(); // create a reference to Form1 to be able to change its contents from this class
-            form.UpdateStatusLabel("Video uploaded! ID: " + obj.Id);
+            Form1 form1 = (Form1)Application.OpenForms["form1"];
+            form1.LabelText = "Video uploaded! ID: " + obj.Id;
 
         }
 
         private static void videosInsertRequest_ProgressChanged(IUploadProgress obj)
         {
-            Form1 form = new Form1(); // create a reference to Form1 to be able to change its contents from this class
-            form.UpdateStatusLabel("Bytes sent: " + obj.BytesSent +  " , Status: "+ obj.Status + " Exception: " + obj.Exception);
+            Form1 form1 = (Form1)Application.OpenForms["form1"];
+            form1.LabelText = "Bytes sent: " + obj.BytesSent +  " , Status: "+ obj.Status + " Exception: " + obj.Exception;
 
         }
     }

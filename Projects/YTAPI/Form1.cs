@@ -42,7 +42,7 @@ namespace YTAPI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UploadVideo v = new UploadVideo("hello", "hello", new string[] { "ja", "la" }, "22", "unlisted", @"C:\hello\hello.mp4");
+            UploadVideo v = new UploadVideo("hello", "hello", new string[] { "ja", "la" }, "22", "unlisted", @"C:\sources\happy.mp4");
             v.Upload();
         }
 
