@@ -9,7 +9,19 @@ namespace Employees
     partial class Employee
     {
 
-        // Propreties!    
+        // Contain a benefit package
+        protected BenefitPackage empBenefits = new BenefitPackage();
+
+        // Expose certain benefit behaviors of object
+        public double GetBenefitCost()
+        { return empBenefits.ComputePayDeduction(); }
+
+        // Expose object through a custom property
+        public BenefitPackage Benefits
+        {
+            get { return empBenefits; }
+            set { empBenefits = value; }
+        }
         // Methods
         public void GiveBonus(float amount)
         {
