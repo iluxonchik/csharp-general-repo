@@ -9,8 +9,19 @@ namespace Employees
     partial class Employee
     {
 
-        // Contain a benefit package
-        protected BenefitPackage empBenefits = new BenefitPackage();
+        public class BenefitPackage
+        {
+            public enum BenefitPackageLevel
+            {
+                Standart, Gold, Platinum
+            }
+            public double ComputePayDeduction()
+            {
+                return 125.0;
+            }
+        }
+
+        Employee.BenefitPackage empBenefits = new Employee.BenefitPackage();
 
         // Expose certain benefit behaviors of object
         public double GetBenefitCost()
