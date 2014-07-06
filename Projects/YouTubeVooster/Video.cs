@@ -33,7 +33,11 @@ namespace YouTubeVooster
                 throw new ArgumentException("Video ID cannot be empty.", "videoID");
             this.videoID = videoID;
 
-            // TODO: get token from videoID
+            // Get token from video ID.
+            string newToken = Token.getToken(videoID);
+            if (newToken.Length == 0)
+                throw new ArgumentException("Token not found! (Invalid video ID?).", "newToken (local variable)");
+            this.videoToken = newToken;
         }
 
         // Properties
