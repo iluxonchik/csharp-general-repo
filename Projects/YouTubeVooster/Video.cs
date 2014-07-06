@@ -63,12 +63,12 @@ namespace YouTubeVooster
             }
         }
 
-        protected void playVideo()
+        public void playVideo()
         {
             /* Makes the web request, which adds a video view */
 
             // Build the url to wich the request will be done
-            string vidURL = "https://www.youtube.com/get_video?noflv=1&video_id=" + this.videoID + "&t=" + this.videoToken;
+            string vidURL = "https://www.youtube.com/get_video?noflv=1&video_id=" + this.videoID + "&el=detailpage&referrer&fmt=134&ptk=youtube_none&t=" + this.videoToken;
             Uri url = new Uri(vidURL);
 
             // Do the request (this adds the view)

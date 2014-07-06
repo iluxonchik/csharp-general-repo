@@ -30,14 +30,15 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtVideoID = new System.Windows.Forms.TextBox();
+            this.txtNumViews = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDelay = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,19 +60,19 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Number Of Views:";
             // 
-            // textBox1
+            // txtVideoID
             // 
-            this.textBox1.Location = new System.Drawing.Point(162, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtVideoID.Location = new System.Drawing.Point(162, 35);
+            this.txtVideoID.Name = "txtVideoID";
+            this.txtVideoID.Size = new System.Drawing.Size(187, 22);
+            this.txtVideoID.TabIndex = 2;
             // 
-            // textBox2
+            // txtNumViews
             // 
-            this.textBox2.Location = new System.Drawing.Point(162, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(118, 22);
-            this.textBox2.TabIndex = 3;
+            this.txtNumViews.Location = new System.Drawing.Point(162, 73);
+            this.txtNumViews.Name = "txtNumViews";
+            this.txtNumViews.Size = new System.Drawing.Size(118, 22);
+            this.txtNumViews.TabIndex = 3;
             // 
             // label3
             // 
@@ -82,21 +83,22 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Delay (In Seconds):";
             // 
-            // textBox3
+            // txtDelay
             // 
-            this.textBox3.Location = new System.Drawing.Point(162, 112);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(50, 22);
-            this.textBox3.TabIndex = 5;
+            this.txtDelay.Location = new System.Drawing.Point(162, 112);
+            this.txtDelay.Name = "txtDelay";
+            this.txtDelay.Size = new System.Drawing.Size(50, 22);
+            this.txtDelay.TabIndex = 5;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtDelay);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtVideoID);
+            this.groupBox1.Controls.Add(this.txtNumViews);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(385, 147);
@@ -104,14 +106,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General Settings";
             // 
-            // button1
+            // btnStart
             // 
-            this.button1.Location = new System.Drawing.Point(322, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStart.Location = new System.Drawing.Point(322, 164);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.TabIndex = 7;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // label4
             // 
@@ -133,6 +136,15 @@
             this.lblStatus.TabIndex = 9;
             this.lblStatus.Text = "Stopped";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(293, 114);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 17);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "label5";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -140,7 +152,7 @@
             this.ClientSize = new System.Drawing.Size(407, 199);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "YouTube Vooster";
@@ -156,14 +168,15 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtVideoID;
+        private System.Windows.Forms.TextBox txtNumViews;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDelay;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label label5;
     }
 }
 
