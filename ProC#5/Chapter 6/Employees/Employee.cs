@@ -34,12 +34,13 @@ namespace Employees
             set { empBenefits = value; }
         }
         // Methods
-        public void GiveBonus(float amount)
+        // This method can now be "overriden" by a derived class
+        public virtual void GiveBonus(float amount)
         {
             this.currPay += amount;
         }
 
-        public void DisplayStats()
+        public virtual void DisplayStats()
         {
             Console.WriteLine("Name: {0}", this.empName);
             Console.WriteLine("ID: {0}", this.empID);
