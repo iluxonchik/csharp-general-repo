@@ -100,15 +100,26 @@ namespace YTAPI
         private static void videosInsertRequest_ResponseReceived(Video obj)
         {
             Form1 form1 = (Form1)Application.OpenForms["form1"];
-            form1.LabelText = "Video uploaded! ID: " + obj.Id;
-
+            Debug.Write("Video uploaded! ID: " + obj.Id);
+            form1.SetTextlblStatus("Video uploaded! ID: " + obj.Id);
         }
 
         private static void videosInsertRequest_ProgressChanged(IUploadProgress obj)
         {
             Form1 form1 = (Form1)Application.OpenForms["form1"];
-            form1.LabelText = "Bytes sent: " + obj.BytesSent +  " , Status: "+ obj.Status + " Exception: " + obj.Exception;
+            Debug.Write("Bytes sent: " + obj.BytesSent + " , Status: " + obj.Status + " Exception: " + obj.Exception);
+            form1.SetTextlblStatus("Bytes sent: " + obj.BytesSent +  " , Status: "+ obj.Status + " Exception: " + obj.Exception);
+            
 
         }
+
+        public void Test()
+        {
+            Form1 form1 = (Form1)Application.OpenForms["form1"];
+            form1.SetTextlblStatus(form1.LabelText + "1");
+        }
+
+        
+        
     }
 }
