@@ -80,24 +80,7 @@ namespace YTAPI
                }
            }
 
-           public void SetTextlblUploaded(string text)
-           {
-               /* Update the "Has The Video Been Uploaded Yet?" label */
-               // InvokeRequired required compares the thread ID of the 
-               // calling thread to the thread ID of the creating thread. 
-               // If these threads are different, it returns true. 
-
-
-               if (this.lblStatus.InvokeRequired)
-               {
-                   SetTextCallback d = new SetTextCallback(SetTextlblUploaded);
-                   this.Invoke(d, new object[] { text });
-               }
-               else
-               {
-                   this.lblUploaded.Text = text;
-               }
-           }
+         
 
     }
 }

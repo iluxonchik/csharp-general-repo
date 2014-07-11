@@ -30,7 +30,6 @@
         {
             this.lblStatus = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblUploaded = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblStatus
@@ -38,9 +37,9 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(176, 141);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(46, 17);
+            this.lblStatus.Size = new System.Drawing.Size(157, 17);
             this.lblStatus.TabIndex = 0;
-            this.lblStatus.Text = "label1";
+            this.lblStatus.Text = "Indicates Upload Status";
             // 
             // button1
             // 
@@ -48,25 +47,15 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(202, 45);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Start Upload!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblUploaded
-            // 
-            this.lblUploaded.AutoSize = true;
-            this.lblUploaded.Location = new System.Drawing.Point(179, 162);
-            this.lblUploaded.Name = "lblUploaded";
-            this.lblUploaded.Size = new System.Drawing.Size(46, 17);
-            this.lblUploaded.TabIndex = 2;
-            this.lblUploaded.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 367);
-            this.Controls.Add(this.lblUploaded);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblStatus);
             this.Name = "Form1";
@@ -81,7 +70,6 @@
 
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblUploaded;
     }
 }
 

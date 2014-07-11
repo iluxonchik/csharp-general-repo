@@ -97,18 +97,32 @@ namespace YTAPI
         }
 
 
-        private static void videosInsertRequest_ResponseReceived(Video obj)
+        private static void videosInsertRequest_ResponseReceived(Video video)
         {
             Form1 form1 = (Form1)Application.OpenForms["form1"];
-            Debug.Write("Video uploaded! ID: " + obj.Id);
-            form1.SetTextlblStatus("Video uploaded! ID: " + obj.Id);
+
+            Debug.Write("Video uploaded! ID: " + video.Id);
+            form1.SetTextlblStatus("Video uploaded! ID: " + video.Id);
         }
 
-        private static void videosInsertRequest_ProgressChanged(IUploadProgress obj)
+        private static void videosInsertRequest_ProgressChanged(IUploadProgress progress)
         {
             Form1 form1 = (Form1)Application.OpenForms["form1"];
-            Debug.Write("Bytes sent: " + obj.BytesSent + " , Status: " + obj.Status + " Exception: " + obj.Exception);
-            form1.SetTextlblStatus("Bytes sent: " + obj.BytesSent +  " , Status: "+ obj.Status + " Exception: " + obj.Exception);
+
+            switch (progress.Status)
+            {
+                    // With this switch, the lblStatus now won't get updated when the video status changes to "Completed",
+                    // which caused the "Video uploaded! ID: XXXX" text to not even show up (it actually changed really fast).
+                case UploadStatus.Uploading:
+                    Debug.Write("Bytes sent: " + progress.BytesSent + " , Status: " + progress.Status + " Exception: " + progress.Exception);
+                    form1.SetTextlblStatus("Bytes sent: " + progress.BytesSent + " ,| Status: " + progress.Status + "| Exception: " + progress.Exception);
+                    break;
+
+                case UploadStatus.Failed:
+                    form1.SetTextlblStatus("An error prevented the upload from completing. ERROR: " + progress.Exception);
+                    break;
+            }
+            
             
 
         }
