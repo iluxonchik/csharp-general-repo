@@ -12,7 +12,7 @@ namespace Employees
         {
             Console.WriteLine("***** The Employee Class Hierarchy ****\n");
             
-            Manager chucky = new Manager("Cucky", 50, 92, 100000, "333-23-2322", 9000;
+            Manager chucky = new Manager("Cucky", 50, 92, 100000, "333-23-2322", 9000);
             chucky.GiveBonus(300);
             chucky.DisplayStats();
             Console.WriteLine();

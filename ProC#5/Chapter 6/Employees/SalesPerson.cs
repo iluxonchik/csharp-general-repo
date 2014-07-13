@@ -16,7 +16,8 @@ namespace Employees
         }
         public int SalesNumber { get; set; }
 
-        public override void GiveBonus(float amount)
+        // This method is sealed, i.e. cannot be overriden in derived classes
+        public override sealed void GiveBonus(float amount)
         {
             int salesBonus = 0;
             if (SalesNumber >= 0 && SalesNumber <= 100)

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Employees
 {
-    partial class Employee
+    // Employee class in now abstact, i.e. cannot be directly instantiated
+    // (ex: Employee X = new Employee(); is now illegal!)
+    abstract partial class Employee
     {
 
         public class BenefitPackage
@@ -46,6 +48,19 @@ namespace Employees
             Console.WriteLine("ID: {0}", this.empID);
             Console.WriteLine("Age: {0}", this.empAge);
             Console.WriteLine("Pay: {0}", this.currPay);
+        }
+
+        static void CastingExamples()
+        {
+            // Manager "is-a" System.Object, so we can
+            // store a manager reference in an onject variable
+            object frank = new Manager("Frank", 9, 300, 40000, "111-11-111", 5);
+
+            // A Manager "is-an" Employee too
+            Employee moonUnit = new Manager("MoonUnit", 2, 3001, 2000, "111-11-1234", 1);
+
+            // A PTSalesPerson "is-a" SalesPerson
+            SalesPerson jill = new PTSalesPerson("Jill", 834, 3002, 10000, "1231", 90);
         }
     }
 }
