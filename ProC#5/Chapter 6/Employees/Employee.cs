@@ -35,6 +35,14 @@ namespace Employees
             get { return empBenefits; }
             set { empBenefits = value; }
         }
+
+        public string Name
+        {
+            get { return this.empName; }
+            set { this.empName = value; }
+        }
+
+        public int SalesNumber { get; set; }
         // Methods
         // This method can now be "overriden" by a derived class
         public virtual void GiveBonus(float amount)
@@ -62,5 +70,6 @@ namespace Employees
             // A PTSalesPerson "is-a" SalesPerson
             SalesPerson jill = new PTSalesPerson("Jill", 834, 3002, 10000, "1231", 90);
         }
+
     }
 }
