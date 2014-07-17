@@ -12,6 +12,13 @@ namespace ObjectOverrides
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
+        public string SSN { get; set; }
+
+        // Return a hash code based on a point unique string data
+        public override int GetHashCode()
+        {
+            return SSN.GetHashCode();
+        }
 
         public Person(string fName, string lName, int personAge)
         {
