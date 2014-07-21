@@ -22,9 +22,13 @@ namespace SimpleException
                 for (int i = 0; i < 10; i++)
                     myCar.Accelerate(10);
             }
+                // TargetSite actually returns a MethodBase object
             catch (Exception e)
             {
                 Console.WriteLine("\n*** ERROR! ***");
+                Console.WriteLine("Mamber name: {0}", e.TargetSite);
+                Console.WriteLine("Class of defining member: {0}", e.TargetSite.DeclaringType);
+                Console.WriteLine("Stack: {0}", e.StackTrace);
                 Console.WriteLine("Method: {0}",e.TargetSite);
                 Console.WriteLine("Message: {0}", e.Message);
                 Console.WriteLine("Source: {0}", e.Source);
