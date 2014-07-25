@@ -38,7 +38,7 @@ namespace Employees
             /* Hexagon hex2 = frank as Hexagon;
              * if (hex2 == null)
              *      Console.WriteLine("Sorry, frank is not a Hexagon...");
-             */
+             */          
 
             Console.ReadLine();
         
