@@ -49,7 +49,7 @@ namespace CustomInterface
     // New Shape derived class named triangle
     class Triangle : Shape, IPointy
     {
-        public Triangle();
+        public Triangle() {}
         public Triangle(string name) : base(name) { }
         public override void Draw()
         {
