@@ -22,7 +22,7 @@ namespace CustomInterface
 
     // Hexagon DOES override Draw().
     // Hexagon now implements IPointy
-    class Hexagon : Shape, IPointy
+    class Hexagon : Shape, IPointy, IDraw3D
     {
         public Hexagon() { }
         public Hexagon( string name ) : base(name) { }
@@ -34,7 +34,7 @@ namespace CustomInterface
     }
 
     // This class extends Circle and hides the inherited Draw() method.
-    class ThreeDCircle : Circle
+    class ThreeDCircle : Circle, IDraw3D
     {
         // Hide the PetName property above me.
         public new string PetName { get; set; }

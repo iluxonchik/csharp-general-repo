@@ -56,5 +56,11 @@ namespace CustomInterface
 
                 Console.ReadLine();
         }
+
+        static void DeawIn3D(IDraw3D itf3d)
+        {
+            Console.WriteLine("-> Drawing IDraw3D compatible type");
+            itf3d.Draw3D();
+        }
     }
 }
