@@ -53,8 +53,23 @@ namespace CustomInterface
                 else
                     Console.WriteLine("-> {0}\'s not Pointy!", someShapes[i].PetName);
             }
-
+            Shape[] someshapes = { new Hexagon(), new Circle(), new Triangle("Joe"), new Circle("JoJo") };
+            // Get the first pointy item
+            IPointy firstPointyItem = FindFirstPointyShape(someshapes);
+            Console.WriteLine("The item has {0} points.", firstPointyItem.Points);
                 Console.ReadLine();
+        }
+
+        // This method returns the first object in the
+        // array that implements IPointy
+        static IPointy FindFirstPointyShape(Shape[] shapes)
+        {
+            foreach (Shape s in shapes)
+            {
+                if (s is IPointy)
+                    return s as IPointy;
+            }
+            return null;
         }
 
         static void DeawIn3D(IDraw3D itf3d)
