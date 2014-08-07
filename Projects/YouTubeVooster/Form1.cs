@@ -24,32 +24,40 @@ namespace YouTubeVooster
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Video video = new Video(txtVideoID.Text);
-            //MessageBox.Show(video.VideoToken);
-
-            int userNumViews = int.Parse(txtNumViews.Text);
-            int numThreads = int.Parse(txtNumThreads.Text);
-
-            // First let's deliver the remainder of int division
-            int remainder = userNumViews % numThreads;
-            for (int i = 0; i < remainder; i++)
-                video.playVideo();
-
-            // This player is used in each one of the threads
-            Player newPlayer = new Player(userNumViews/ numThreads, video);
-
-            // Now, let's distribute the rest of the views through X threads
-            for (int i = 0; i < numThreads; i++)
-                new Thread(new ThreadStart(newPlayer.makeYTRequest)).Start();
-
-            /************** "Classical" approach*******************
-            for (int i = 0; i < int.Parse(txtNumViews.Text); i++)
+            if (txtVideoID.Text.Length > 0 && txtNumViews.Text.Length > 0 && txtNumThreads.Text.Length > 0)
             {
-                video.playVideo();
-                label5.Text = i.ToString();
+
+
+                Video video = new Video(txtVideoID.Text);
+                //MessageBox.Show(video.VideoToken);
+
+                int userNumViews = int.Parse(txtNumViews.Text);
+                int numThreads = int.Parse(txtNumThreads.Text);
+
+                // First let's deliver the remainder of int division
+                int remainder = userNumViews % numThreads;
+                for (int i = 0; i < remainder; i++)
+                    video.playVideo();
+
+                // This player is used in each one of the threads
+                Player newPlayer = new Player(userNumViews / numThreads, video);
+
+                // Now, let's distribute the rest of the views through X threads
+                for (int i = 0; i < numThreads; i++)
+                    new Thread(new ThreadStart(newPlayer.makeYTRequest)).Start();
+
+                /************** "Classical" approach*******************
+                for (int i = 0; i < int.Parse(txtNumViews.Text); i++)
+                {
+                    video.playVideo();
+                    label5.Text = i.ToString();
+                }
+                ******************************************************/
             }
-            ******************************************************/
-             
+            else
+            {
+            MessageBox.Show("One Or More Fields Is Empty!")
+            }
         }
 
     }
