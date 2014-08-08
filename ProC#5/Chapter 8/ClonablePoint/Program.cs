@@ -36,22 +36,42 @@ namespace ClonablePoint
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public PointDescription desc = new PointDescription();
 
+        public Point(int xPos, int yPos, string PetName) { X = xPos; Y = yPos; desc.PetName = PetName; }
         public Point(int xPos, int yPos) { X = xPos; Y = yPos; }
         public Point() { }
 
         // Override Object.ToString()
         public override string ToString()
         {
-            return string.Format("X = {0}; Y = {1}", X, Y);
+            return string.Format("X = {0}; Y = {1}; Name = {2};\nID = {3}\n", X, Y, desc.PetName, desc.PointID);
         }
 
         // Return a copy of the current object
         public object Clone()
         {  
-            // Copy each field of the Point, member by member
-            return this.MemberwiseClone();
-            // return new Point(this.X, this.Y); would work too! 
+            // First get a shallow copy
+            Point newPoint = (Point)this.MemberwiseClone();
+
+            // Clone the reference vars
+            PointDescription currentDesc = new PointDescription();
+            currentDesc.PetName = this.desc.PetName;
+            newPoint.desc = currentDesc;
+            return newPoint;
+        }
+    }
+
+    // This class describes a point
+    public class PointDescription
+    {
+        public string PetName { get; set; }
+        public Guid PointID { get; set; }
+
+        public PointDescription()
+        {
+            PetName = "No-Name";
+            PointID = Guid.NewGuid();
         }
     }
 }
