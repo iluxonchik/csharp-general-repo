@@ -10,6 +10,9 @@ namespace FunWithGenericCollections
     {
         static void Main(string[] args)
         {
+            UseGenericStack();
+
+            Console.ReadLine();
         }
 
         static void UseGenericList()
@@ -39,6 +42,32 @@ namespace FunWithGenericCollections
             Person[] arrOfPeople = people.ToArray();
             for (int i = 0; i < arrOfPeople.Length; i++)
                 Console.WriteLine("First Name: {0}", arrOfPeople[i].FirstName);
+        }
+
+        static void UseGenericStack()
+        {
+            Stack<Person> stackOfPeople = new Stack<Person>();
+            stackOfPeople.Push(new Person {FirstName = "Frank", LastName = "Lampard" , Age = 22});
+            stackOfPeople.Push(new Person {FirstName = "Didider", LastName = "Drogba" , Age = 21});
+            stackOfPeople.Push(new Person {FirstName = "John", LastName = "Terry" , Age = 23});
+            
+            Console.WriteLine("First Person is: {0}", stackOfPeople.Peek());
+            Console.WriteLine("Popped off: {0}", stackOfPeople.Pop());
+
+            Console.WriteLine("\nFirst Person is: {0}", stackOfPeople.Peek());
+            Console.WriteLine("Popped off: {0}", stackOfPeople.Pop());
+
+            Console.WriteLine("\nFirst Person is: {0}", stackOfPeople.Peek());
+            Console.WriteLine("Popped off: {0}", stackOfPeople.Pop());
+
+            try 
+            {
+                Console.WriteLine("First Person is: {0}", stackOfPeople.Peek());
+            Console.WriteLine("Popped off: {0}", stackOfPeople.Pop());
+            }
+            catch (InvalidOperationException ex){
+                Console.WriteLine("\nError: {0}", ex.Message);
+            }
         }
     }
 }
