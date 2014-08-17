@@ -11,6 +11,7 @@ namespace FunWithGenericCollections
         static void Main(string[] args)
         {
             UseGenericStack();
+            UseGenericQueue();
 
             Console.ReadLine();
         }
@@ -67,6 +68,35 @@ namespace FunWithGenericCollections
             }
             catch (InvalidOperationException ex){
                 Console.WriteLine("\nError: {0}", ex.Message);
+            }
+        }
+
+        static void GetCoffe(Person p)
+        {
+            Console.WriteLine("{0} got coffee!", p.FirstName);
+        }
+
+        static void UseGenericQueue()
+        {
+            Queue<Person> peopleQ = new Queue<Person>();
+            peopleQ.Enqueue(new Person() { FirstName = "John", LastName = "Terry" });
+            peopleQ.Enqueue(new Person() { FirstName = "Frank", LastName = "Lampard" });
+            peopleQ.Enqueue(new Person() { FirstName = "Didier", LastName = "Drogba" });
+
+            Console.WriteLine("{0} first in line!", peopleQ.Peek().FirstName);
+        
+            // Remove each person from Queue
+            GetCoffe(peopleQ.Dequeue());
+            GetCoffe(peopleQ.Dequeue());
+            GetCoffe(peopleQ.Dequeue());
+            // Try the Dequeue again?
+            try
+            {
+                GetCoffe(peopleQ.Dequeue());
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine("Error! {0}", ex.Message);
             }
         }
     }
