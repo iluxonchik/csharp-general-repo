@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace FunWithGenericCollections
 {
+    class SortPeopleByAge : IComparer<Person>
+    {
+        public int Compare(Person firstPerson, Person secondPerson)
+        {
+            if (firstPerson.Age > secondPerson.Age)
+                return 1;
+            if (firstPerson.Age < secondPerson.Age)
+                return -1;
+            else
+                return 0;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
