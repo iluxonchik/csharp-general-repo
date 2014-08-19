@@ -111,5 +111,34 @@ namespace FunWithGenericCollections
                 Console.WriteLine("Error! {0}", ex.Message);
             }
         }
+
+        static void UseSortedSet()
+        {
+            // Make some people with different ages
+            SortedSet<Person> setOfPeople = new SortedSet<Person>(new SortPeopleByAge())
+            {
+                new Person {FirstName = "John", LastName = "Terry", Age = 1},
+                new Person {FirstName = "Frank", LastName = "Lampard", Age = 22},
+                new Person {FirstName = "Jay", LastName = "May", Age = 43},
+                new Person {FirstName = "Romelu", LastName = "Lukaku", Age = 8}
+            };
+
+            // The items are now sorted by age
+            foreach (Person p in setOfPeople)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine();
+
+            // Add a few new people
+            setOfPeople.Add(new Person { FirstName = "Didider", LastName = "TDerogba", Age = 12 });
+            setOfPeople.Add(new Person { FirstName = "Petr", LastName = "Cech", Age = 11 });
+
+            // Still sorted by age!
+            foreach (Person p in setOfPeople)
+            {
+                Console.WriteLine(p);
+            }
+        }
     }
 }
