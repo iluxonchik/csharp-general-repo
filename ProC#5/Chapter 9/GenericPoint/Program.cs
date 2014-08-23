@@ -10,6 +10,21 @@ namespace GenericPoint
     {
         static void Main(string[] args)
         {
+            // Point using ints
+            Point<int> p = new Point<int>(10, 10);
+            Console.WriteLine(p.ToString());
+            p.ResetPoint();
+            Console.WriteLine(p.ToString());
+            Console.WriteLine();
+
+            // Point using double
+            Point<double> p2 = new Point<double>(4.4, 3.3);
+            Console.WriteLine(p2.ToString());
+            p2.ResetPoint();
+            Console.WriteLine(p2.ToString());
+            Console.WriteLine();
+
+            Console.ReadLine();
         }
 
         public struct Point<T>
