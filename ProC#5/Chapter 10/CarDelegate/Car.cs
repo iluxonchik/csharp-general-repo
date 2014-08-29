@@ -32,7 +32,8 @@ namespace CarDelegate
                 {
                     listOfHandlers("Sorry, the car is dead...");
                 }
-                else
+            }
+            else
                 {
                     CurrentSpeed += delta;
 
@@ -51,7 +52,7 @@ namespace CarDelegate
                 {
                     Console.WriteLine("CurrentSpeed = {0}", CurrentSpeed);
                 }
-            }
+            
         }
 
 
