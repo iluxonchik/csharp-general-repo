@@ -16,9 +16,11 @@ namespace CarDelegate
         private CarEngineHandler listOfHandlers;
 
         // 3) Add a registration function for the caller
+        // Now with multicasting support
+        // The += operator is used instead of the assignment operator (=)
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
         {
-            listOfHandlers = methodToCall;
+            listOfHandlers += methodToCall;
         }
 
         // 4) Implemenet the Accelerate() method to invoke the delegate's

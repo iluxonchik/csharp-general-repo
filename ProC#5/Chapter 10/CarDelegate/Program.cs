@@ -17,6 +17,7 @@ namespace CarDelegate
 
             // Now, tell the car which method to call when it wants to send us messages
             c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
+            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent2));
 
             // Speed up (this will trigger the events)
             Console.WriteLine("**** Speeding UUUUUUP! *****\n");
@@ -31,6 +32,11 @@ namespace CarDelegate
             Console.WriteLine("\n **** Message From Car Object ****");
             Console.WriteLine("=> {0}", msg);
             Console.WriteLine("**********************************\n");
+        }
+
+        public static void OnCarEngineEvent2(string msg)
+        {
+            Console.WriteLine("=> {0}", msg.ToUpper());
         }
     }
 }
