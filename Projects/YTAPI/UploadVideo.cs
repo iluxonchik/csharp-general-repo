@@ -103,6 +103,14 @@ namespace YTAPI
 
             Debug.Write("Video uploaded! ID: " + video.Id);
             form1.SetTextlblStatus("Video uploaded! ID: " + video.Id);
+
+
+            VideoEntry a = new VideoEntry();
+
+            Debug.Write("\n****PRPRPRP:" + video.ProcessingDetails.ProcessingStatus);
+
+
+            
         }
 
         private static void videosInsertRequest_ProgressChanged(IUploadProgress progress)
